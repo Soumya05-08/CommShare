@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Items - CommShare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .item-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .search-container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="index1.html" class="text-2xl font-bold text-teal-600">CommShare</a>
+        <div class="flex items-center gap-4">
+          <a href="index1.html" class="text-gray-700 hover:text-teal-600 transition">Home</a>
+          <a href="main.html" class="text-gray-700 hover:text-teal-600 transition">Browse</a>
+          <a href="add-item.html" class="text-gray-700 hover:text-teal-600 transition">Lend Item</a>
+          <a href="profile.html" class="text-gray-700 hover:text-teal-600 transition">Profile</a>
+          <button id="logoutBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+            Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container mx-auto px-6 py-8">
+    <!-- Search Section -->
+    <div class="search-container rounded-2xl p-8 mb-8 shadow-2xl">
+      <h1 class="text-3xl font-bold text-gray-800 mb-6">Find Items Near You</h1>
+      
+      <!-- Location Options -->
+      <div class="mb-6">
+        <label class="block text-gray-700 font-semibold mb-3">Choose Location Method:</label>
+        <div class="flex gap-4">
+          <button id="useMyLocationBtn" class="flex-1 bg-teal-500 text-white py-3 px-6 rounded-lg hover:bg-teal-600 transition font-semibold">
+            <i class="fas fa-location-crosshairs mr-2"></i> Use My Location
+          </button>
+          <button id="manualLocationBtn" class="flex-1 bg-gray-500 text-white py-3 px-6 rounded-lg hover:bg-gray-600 transition font-semibold">
+            <i class="fas fa-map-marker-alt mr-2"></i> Enter Address
+          </button>
+        </div>
+      </div>
+
+      <!-- Manual Location Input (Hidden by default) -->
+      <div id="manualLocationInput" class="mb-6 hidden">
+        <label class="block text-gray-700 font-semibold mb-2">Enter Location:</label>
+        <div class="flex gap-2">
+          <input type="text" id="manualAddress" placeholder="Enter city or address..." 
+            class="flex-1 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          <button id="geocodeBtn" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Current Location Display -->
+      <div id="locationDisplay" class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg hidden">
+        <p class="text-green-800">
+          <i class="fas fa-check-circle mr-2"></i>
+          <span id="locationText">Location detected</span>
+        </p>
+      </div>
+
+      <!-- Search Input -->
+      <div class="mb-6">
+        <label class="block text-gray-700 font-semibold mb-2">What are you looking for?</label>
+        <div class="flex gap-2">
+          <input type="text" id="searchInput" placeholder="Search for camera, drill, bicycle..." 
+            class="flex-1 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          <button id="searchBtn" class="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition font-bold">
+            <i class="fas fa-search mr-2"></i> Search
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Category:</label>
+          <select id="categoryFilter" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            <option value="">All Categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Tools">Tools</option>
+            <option value="Sports">Sports</option>
+            <option value="Books">Books</option>
+            <option value="Appliances">Appliances</option>
+            <option value="Vehicles">Vehicles</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Radius (km):</label>
+          <select id="radiusFilter" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            <option value="5">1 km</option>
+            <option value="10">2 km</option>
+            <option value="25"selected>3 km</option>
+            <option value="50">4 km</option>
+            <option value="100">5 km</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Sort By:</label>
+          <select id="sortFilter" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            <option value="distance">Distance</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="text-center py-8 hidden">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+      <p class="text-white mt-4">Loading items...</p>
+    </div>
+
+    <!-- Results Count -->
+    <div id="resultsCount" class="text-white text-lg mb-4 hidden">
+      <span id="itemCount">0</span> items found
+    </div>
+
+    <!-- Items Grid -->
+    <div id="itemsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Items will be loaded here dynamically -->
+    </div>
+
+    <!-- No Results Message -->
+    <div id="noResults" class="text-center py-12 hidden">
+      <i class="fas fa-search text-white text-6xl mb-4 opacity-50"></i>
+      <p class="text-white text-xl">No items found. Try adjusting your search or location.</p>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

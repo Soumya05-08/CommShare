@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Details - CommShare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    #map {
+      height: 300px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="index1.html" class="text-2xl font-bold text-teal-600">CommShare</a>
+        <div class="flex items-center gap-4">
+          <a href="index1.html" class="text-gray-700 hover:text-teal-600 transition">Home</a>
+          <a href="main.html" class="text-gray-700 hover:text-teal-600 transition">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Browse
+          </a>
+          <a href="profile.html" class="text-gray-700 hover:text-teal-600 transition">Profile</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Loading Indicator -->
+  <div id="loadingIndicator" class="flex items-center justify-center min-h-screen">
+    <div class="text-center">
+      <div class="inline-block animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-teal-600"></div>
+      <p class="text-gray-600 mt-4">Loading item details...</p>
+    </div>
+  </div>
+
+  <!-- Item Detail Container -->
+  <div id="itemDetailContainer" class="container mx-auto px-6 py-8 hidden">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="grid md:grid-cols-2 gap-0">
+        <!-- Image Section -->
+        <div class="relative">
+          <img id="itemImage" src="" alt="Item" class="w-full h-full object-cover min-h-[400px]">
+          <span id="categoryBadge" class="absolute top-4 left-4 bg-teal-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+            Category
+          </span>
+          <span id="conditionBadge" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+            Condition
+          </span>
+        </div>
+
+        <!-- Details Section -->
+        <div class="p-8">
+          <h1 id="itemName" class="text-4xl font-bold text-gray-800 mb-4"></h1>
+          
+          <div class="flex items-center gap-4 mb-6">
+            <div class="flex-1">
+              <p class="text-gray-500 text-sm">Rent Price</p>
+              <p id="rentPrice" class="text-teal-600 font-bold text-3xl"></p>
+            </div>
+            <div class="flex-1">
+              <p class="text-gray-500 text-sm">Deposit Amount</p>
+              <p id="depositAmount" class="text-gray-700 font-bold text-2xl"></p>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Description</h3>
+            <p id="itemDescription" class="text-gray-600 leading-relaxed"></p>
+          </div>
+
+          <div class="border-t border-b border-gray-200 py-4 mb-6">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <p class="text-gray-500 text-sm">Owner</p>
+                <p id="ownerName" class="font-semibold text-gray-800"></p>
+              </div>
+              <div>
+                <p class="text-gray-500 text-sm">Contact</p>
+                <p id="ownerContact" class="font-semibold text-gray-800 text-sm"></p>
+              </div>
+              <div>
+                <p class="text-gray-500 text-sm">Location</p>
+                <p id="itemLocation" class="font-semibold text-gray-800 text-sm"></p>
+              </div>
+              <div>
+                <p class="text-gray-500 text-sm">Availability</p>
+                <p id="availability" class="font-semibold"></p>
+              </div>
+            </div>
+          </div>
+
+          <button id="rentBtn" class="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-4 px-8 rounded-xl hover:from-teal-600 hover:to-teal-700 transition font-bold text-lg shadow-lg">
+            <i class="fas fa-handshake mr-2"></i> Borrow This Item
+          </button>
+
+          <p class="text-gray-500 text-sm mt-4 text-center">
+            <i class="fas fa-info-circle mr-1"></i> You'll be able to contact the owner after renting
+          </p>
+        </div>
+      </div>
+
+      <!-- Map Section -->
+      <div class="p-8 bg-gray-50">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">
+          <i class="fas fa-map-marker-alt text-teal-600 mr-2"></i> Item Location
+        </h3>
+        <div id="map"></div>
+        <p id="fullAddress" class="text-gray-600 mt-4"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/item-detail.js"></script>
+</body>
+</html>

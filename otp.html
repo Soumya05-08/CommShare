@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Verify OTP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #4e73df, #1cc88a);
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+      }
+
+      .container {
+        background: #fff;
+        width: 90%;
+        max-width: 420px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h2 {
+        color: #4e73df;
+        margin-bottom: 15px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 15px;
+      }
+
+      input {
+        padding: 12px;
+        border: 1.5px solid #ced4da;
+        border-radius: 6px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      input:focus {
+        border-color: #4e73df;
+      }
+
+      button {
+        padding: 12px;
+        background: #4e73df;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      button:hover {
+        background: #1d4ed8;
+      }
+
+      #resend {
+        background: #1cc88a;
+      }
+
+      #resend:hover {
+        background: #17a673;
+      }
+
+      #msg {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #e74a3b;
+      }
+
+      @media screen and (max-width: 480px) {
+        h2 {
+          font-size: 20px;
+        }
+
+        button {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Verify Your OTP</h2>
+      <p>We've sent a 6-digit OTP to your email address.</p>
+      <form id="otpForm">
+        <input type="email" id="email" placeholder="Your Email Address" required />
+        <input type="text" id="otp" placeholder="Enter 6-digit OTP" required />
+        <button type="submit">Verify OTP</button>
+      </form>
+      <button id="resend">Resend OTP</button>
+
+      <p id="msg"></p>
+    </div>
+
+    <script src="./js/otp.js">
+     
+      
+    </script>
+  </body>
+</html>

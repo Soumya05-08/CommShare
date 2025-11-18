@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Font Awesome CDN Link -->
+<link
+  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - CommShare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Scroll Animation Styles */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Flowing connector line */
+        .connector-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #14b8a6, #10b981);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        /* Icon circle styles */
+        .icon-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 10;
+        }
+
+        .icon-circle svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        /* Step container */
+        .step-container {
+            position: relative;
+            margin-bottom: 100px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .connector-line {
+                display: none;
+            }
+
+            .step-container {
+                margin-bottom: 60px;
+            }
+        }
+
+        body {
+            background-color: #0d1b2a;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-[#0d1b2a] shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index1.html" class="text-2xl font-bold text-teal-200">CommShare</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index1.html" class="text-white hover:text-teal-600 transition">Home</a>
+                    <a href="main.html" class="text-white hover:text-teal-600 transition">Browse Rentals</a>
+                    <a href="contact1.html" class="text-white hover:text-teal-600 transition">Contact</a>
+                    <a href="techstack.html" class="text-white hover:text-teal-600 transition">Tech Stack</a>
+                </div>
+                <a href="login.html" class="bg-teal text-white px-6 py-2 rounded-full hover:bg-teal-700 transition">Sign
+                    In</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="bg-gradient-to-br from-teal-500 to-blue-600 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 fade-in-up">How CommShare Works</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto fade-in-up">
+                Your journey to finding the perfect rental products, simplified in 5 easy steps
+            </p>
+        </div>
+    </section>
+
+
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 max-w-6xl">
+
+            <div class="step-container fade-in-left">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                    <div class="text-left md:text-right order-2 md:order-1">
+                        <h2 class="text-4xl font-bold text-white mb-4">Create Your Profile & Join Our Community</h2>
+                        <p class="text-lg text-white leading-relaxed">
+                            Start by signing up using your phone number or email. Set up your verified neighborhood
+                            profile so that people nearby can trust and connect with you. Verification ensures you’re
+                            part of the local sharing network — safe, genuine, and community-driven.
+                        </p>
+                    </div>
+                    <div class="flex justify-center md:justify-start order-1 md:order-2">
+                        <div class="icon-circle bg-teal-500">
+                            <i class="fa-solid fa-user" style="color: white; font-size: 40px;"></i>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="step-container fade-in-right">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                    <div class="flex justify-center md:justify-end">
+                        <div class="icon-circle bg-teal-600">
+                            <i class="fa-solid fa-list" style="color: white; font-size: 40px;"></i>
+
+                        </div>
+                    </div>
+
+                    <div class="text-left">
+                        <h2 class="text-4xl font-bold text-white mb-4">List the Items You're Willing to Lend</h2>
+                        <p class="text-lg text-white leading-relaxed">
+                            Upload photos and descriptions of the items you’re ready to share — whether it’s a toolkit,
+                            an appliance, a novel, or a sports item. Add a deposit amount (if needed) and availability
+                            status. The more details you add, the easier it is for neighbors to find and borrow your
+                            items responsibly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="step-container fade-in-left">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                    <div class="text-left md:text-right order-2 md:order-1">
+                        <h2 class="text-4xl font-bold text-white mb-4">Discover and Request Items Nearby</h2>
+                        <p class="text-lg text-white leading-relaxed">
+                            Use the search and category filters to browse through available items around you.
+                            CommShare’s hyperlocal system ensures you only see items that are close by — making it
+                            simple to pick up and return. Send a borrow request and wait for the lender's approval.
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center md:justify-start order-1 md:order-2">
+                        <div class="icon-circle bg-teal-500">
+                            <i class="fa-solid fa-magnifying-glass" style= "color: white; font-size: 40px;"></i>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="step-container fade-in-right">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                    <div class="flex justify-center md:justify-end">
+                        <div class="icon-circle bg-teal-500">
+                            <i class="fa-solid fa-users-between-lines" style= "color: white; font-size: 40px;"></i>
+
+
+                        </div>
+                    </div>
+
+                    <div class="text-left">
+                        <h2 class="text-4xl font-bold text-white mb-4">Connect, Lend, and Borrow Safely</h2>
+                        <p class="text-lg text-white leading-relaxed">
+                            Once your request is approved, connect through the in-app chat or contact option to finalize
+                            pickup details. Transactions are logged digitally, and both lender and borrower are notified
+                            of due dates and deposits. This ensures transparency and accountability throughout the
+                            process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="step-container fade-in-left">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                    <div class="text-left md:text-right order-2 md:order-1">
+                        <h2 class="text-4xl font-bold text-white mb-4">Return, Rate, and Grow Trust</h2>
+                        <p class="text-lg text-white leading-relaxed">
+                            After using the item, return it on time and in good condition. Both parties can rate and
+                            review each other to maintain a reliable community reputation. Your positive actions
+                            increase your credibility and open up access to more trusted neighbors willing to lend.
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center md:justify-start order-1 md:order-2">
+                        <div class="icon-circle bg-teal-600">
+                            <i class="fa-solid fa-handshake"  style= "color: white; font-size: 50px;"></i>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-teal-200 mb-4">CommShare</h3>
+                    <p class="text-gray-400">Your trusted partner in finding the perfect rental products</p>
+                </div>
+
+
+                <div>
+
+                    <ul class="space-y-2">
+                        <li><a href="index1.html" class="text-gray-400 hover:text-teal-400 transition">Home</a></li>
+                        <li><a href="Main.html" class="text-gray-400 hover:text-teal-400 transition">Browse Rentals</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div>
+
+                    <ul class="space-y-2">
+
+                        <li><a href="t&c.html" class="text-gray-400 hover:text-teal-400 transition">Terms &
+                                Conditions</a></li>
+                        <li><a href="index1.html#about" class="text-gray-400 hover:text-teal-400 transition">About
+                                Us</a></li>
+                    </ul>
+                </div>
+                <div>
+
+                    <ul class="space-y-2">
+                        <li><a href="contact1.html" class="text-gray-400 hover:text-teal-400 transition">Contact Us</a>
+                        </li>
+                        <li><a href="login.html" class="text-gray-400 hover:text-teal-400 transition">Sign In</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 CommShare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="./js/howitwork.js"></script>
+    
+</body>
+
+</html>
