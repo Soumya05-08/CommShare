@@ -30,7 +30,7 @@ CommShare is a web-based platform designed to enable community members to share 
 - Express.js  
 
 ### **Database**
-- MongoDB (or MySQL based on your implementation)
+- MongoDB 
 
 ---
 
